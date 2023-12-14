@@ -1,0 +1,65 @@
+ 
+  .social-link {
+    background-color: #fff;
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #fff;
+    z-index: 1;
+  }
+  
+  .social-link .icon {
+    position: relative;
+    color: #262626;
+    transition: 0.5s;
+    z-index: 3;
+  }
+  
+  .social-link:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+  }
+  
+  .social-link:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: 0.5s;
+    z-index: 2;
+  }
+  
+  .social-link:hover:before {
+    top: 0;
+  }
+
+  .social-link-0:before {
+    background: #262626;
+  }
+
+  .social-link-1:before {
+    background: #3b5999;
+  }
+  
+  .social-link-2:before {
+    background: #55acee;
+  }
+  
+  .social-link-3:before {
+    background: #0077b5;
+  }
+  
+  .social-link-4:before {
+    background: #127CD6;
+  }
+
+  .social-link-5:before {
+    background: #c60063;
+  }
+  
+ 
