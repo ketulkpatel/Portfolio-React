@@ -81,8 +81,7 @@ export default function Home() {
 
   return (
     <VStack minHeight="100vh" >
-      <Welcome>
-      </Welcome>
+      <Welcome/>
       <Flex>
         <Heading
           as="h1"

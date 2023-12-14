@@ -51,7 +51,7 @@ const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e : any) => {
       const { clientX, clientY } = e;
       setMousePosition({ x: clientX, y: clientY });
     };
