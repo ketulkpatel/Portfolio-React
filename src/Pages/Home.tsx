@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import "./Home.css";
 import Welcome from "../Components/Welcome";
+import FullStack from "../Components/FullStack";
 export default function Home() {
   const { colorMode } = useColorMode();
   const skillsData = [
@@ -80,43 +81,10 @@ export default function Home() {
   ];
 
   return (
-    <VStack minHeight="100vh" >
-      <Welcome/>
-      <Flex>
-        <Heading
-          as="h1"
-          size="xl"
-          marginBottom="1rem"
-          color={colorMode === "light" ? "teal.500" : "cyan.300"}
-        >
-          Interests
-        </Heading>
-      </Flex>
-      <HStack width="100%" justifyContent="space-around">
-        <Flex>
-          <img
-            src={`/src/assets/images/Full_Stack.png`}
-            alt={"FullStack Developer"}
-            width="500px"
-            height="500px"
-          />
-        </Flex>
-          <VStack>
-          <Flex>
-            <Heading
-              as="h2"
-              size="lg"
-              
-              color={colorMode === "light" ? "teal.500" : "cyan.300"}
-            >
-              Full Stack Developement
-            </Heading>
-            ⚡ Crafting dynamic and responsive web frontends with expertise in ReactJS and Angular for an enhanced user experience.
-            ⚡ Building mobile applications using Flutter for cross-platform development and native Android technologies to bring innovative ideas to life.
-            ⚡ Driving server-side development with proficiency in NodeJS, ExpressJS, and Flask to create robust and scalable backend systems for seamless application functionality.
-          </Flex>
-          </VStack>
-      </HStack>
+    <VStack minHeight="100vh">
+      <Welcome />
+      <Heading>Interests</Heading>
+      <FullStack />
       {/* <HStack width="100%" justifyContent="space-evenly">
         {skillsData.map((categoryData) => (
           <Flex

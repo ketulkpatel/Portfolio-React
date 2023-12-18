@@ -1,15 +1,16 @@
 import { Box, useColorMode } from "@chakra-ui/react";
 
 export default function Logo() {
-  const { toggleColorMode, colorMode } = useColorMode();
+
+  const { colorMode } = useColorMode();
 
   return (
     <Box
-      fontSize={{ base: "1.5rem", md: "1.7rem" }}
+      fontSize={{ base: "1.5rem", md: "2rem" }}
       fontWeight="bold"
       borderRadius="full"
-      width={{ base: "40px", md: "60px" }}
-      height={{ base: "40px", md: "60px" }}
+      width={{ base: "50px", md: "70px" }}
+      height={{ base: "50px", md: "70px" }}
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -17,6 +18,7 @@ export default function Logo() {
         transform: "scale(1.05)",
         transition: "transform 0.2s",
       }}
+      cursor= "pointer"
     >
       <Box
         bgGradient={

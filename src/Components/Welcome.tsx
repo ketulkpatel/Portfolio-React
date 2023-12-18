@@ -4,12 +4,11 @@ import {
   Flex,
   Heading,
   Icon,
-  Link,
+  Img,
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import {
   MdOutlineWavingHand,
   MdOutlineFastfood,
@@ -18,18 +17,26 @@ import {
 import { BsPersonWorkspace } from "react-icons/bs";
 import { FaCode, FaInstagram } from "react-icons/fa6";
 import { BsArrowRepeat } from "react-icons/bs";
-import {
-  FaLinkedin,
-  FaGithub,
-  FaFacebook,
-  FaTwitter,
-  FaGooglePlusG,
-} from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaFacebook, FaTwitter } from "react-icons/fa";
 import { PiMicrosoftOutlookLogoFill } from "react-icons/pi";
 import "./Welcome.css";
 
 export default function Welcome() {
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
+
+  const socialMediaLinks = [
+    { name: "GitHub", link: "https://github.com/ketulkpatel", icon: FaGithub },
+    { name: "LinkedIn", link: "https://www.linkedin.com/in/ketul-patel-61264b188/", icon: FaLinkedin },
+    { name: "Outlook", link: "mailto:ketul.patel6@outlook.com", icon: PiMicrosoftOutlookLogoFill },
+    { name: "Twitter", link: "https://twitter.com/ketulpatel455", icon: FaTwitter },
+    { name: "Facebook", link: "https://www.facebook.com/ketul.patel.94801116/", icon: FaFacebook },
+    { name: "Instagram", link: "https://www.instagram.com/the_ketul_patel/", icon: FaInstagram },
+  ];
+
+  const imageSrc =
+    colorMode === "dark"
+      ? "/src/assets/images/Person_Night.png"
+      : "/src/assets/images/Person_Day.png";
 
   const gradientStyle = {
     backgroundImage: `linear-gradient(to right, ${
@@ -40,121 +47,82 @@ export default function Welcome() {
     fontWeight: "bold",
   };
 
-  const SocialIcons = () => {
-    return (
-      <Flex margin={20} direction="row" justify="center" align="center">
-        <a href="#" className="social-icon">
-          <Icon as={FaFacebook} className="icon" />
-        </a>
-      </Flex>
-    );
+  const handleSocialLinkClick = (link: string) => {
+    window.open(link, "_blank");
   };
 
   return (
     <Flex
-      // backgroundImage={`url(${backgroundImageUrl})`}
-      backgroundSize="cover"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      height="100vh"
+      minHeight="100vh"
       width="100%"
       justifyContent="space-evenly"
-      marginTop="40"
+      paddingTop="75"
     >
       <Flex direction="column" fontFamily="monospace">
-        <Heading as="h1">
-          Hello <Icon as={MdOutlineWavingHand} boxSize={8}></Icon> ,
-        </Heading>
-        <Text fontSize="xl">
-          I'm <span style={gradientStyle}>Ketul Patel</span>{" "}
-          <Icon as={BsPersonWorkspace} boxSize={5}></Icon>. Full Stack
-          Developer,
-        </Text>
-        <Text fontSize="xl">
-          Cloud Learner & Machine Learning Enthusiastic.
-        </Text>
-        <Flex gap={20}>
-          <Icon as={MdOutlineFastfood} boxSize={6}></Icon>
-          <Icon as={MdAirlineSeatIndividualSuite} boxSize={6}></Icon>
-          <Icon as={FaCode} boxSize={6}></Icon>
-          <Icon as={BsArrowRepeat} boxSize={6}></Icon>
-        </Flex>
-        <Flex gap={12}>
-          <Text>eat();</Text>
-          <Text>sleep();</Text>
-          <Text>code();</Text>
-          <Text>repeat();</Text>
-        </Flex>
-        <Flex marginLeft={-10} marginTop={10} justifyContent="space-evenly">
-          <Circle size={12} 
- className="social-link social-link-0">
-            <Icon as={FaGithub} className="icon" boxSize={8} />
-          </Circle>
-          <Circle size={12}className="social-link social-link-1">
-            <Icon as={FaFacebook} className="icon" boxSize={8} />
-          </Circle>
-          <Circle size={12} className="social-link social-link-2">
-            <Icon as={FaTwitter} className="icon" boxSize={8} />
-          </Circle>
-          <Circle size={12}className="social-link social-link-3">
-            <Icon
-              as={FaLinkedin}
-              className="icon"
-              boxSize={8}
-              color="#0077B5"
-            />
-          </Circle>
-          <Circle size={12} className="social-link social-link-4">
-            <Icon as={PiMicrosoftOutlookLogoFill} className="icon" boxSize={8} />
-          </Circle>
-          <Circle size={12} className="social-link social-link-5">
-            <Icon as={FaInstagram} className="icon" boxSize={8} />
-          </Circle>
-        </Flex>
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2 }}
+        >
+          <Heading as="h1">
+            Hello <Icon as={MdOutlineWavingHand} boxSize={8}></Icon> ,
+          </Heading>
+          <Text fontSize="xl">
+            I'm <span style={gradientStyle}>Ketul Patel</span>{" "}
+            <Icon as={BsPersonWorkspace} boxSize={5}></Icon>. Full Stack
+            Developer,
+          </Text>
+          <Text fontSize="xl">
+            Cloud Learner & Machine Learning Enthusiastic.
+          </Text>
+          <Flex gap={20}>
+            <Icon as={MdOutlineFastfood} boxSize={6}></Icon>
+            <Icon as={MdAirlineSeatIndividualSuite} boxSize={6}></Icon>
+            <Icon as={FaCode} boxSize={6}></Icon>
+            <Icon as={BsArrowRepeat} boxSize={6}></Icon>
+          </Flex>
+          <Flex gap={12}>
+            <Text>eat();</Text>
+            <Text>sleep();</Text>
+            <Text>code();</Text>
+            <Text>repeat();</Text>
+          </Flex>
+          <Flex marginTop={10}>
+            <Text fontSize="22" fontFamily="monospace" fontStyle="oblique">
+              CONNECT WITH ME
+            </Text>
+          </Flex>
+          <Flex marginLeft={-10} marginTop="3" justifyContent="space-evenly">
+            {socialMediaLinks.map((socialMedia, index) => (
+              <Circle
+                key={index}
+                size={12}
+                className={`social-link social-link-${index}`}
+                onClick={() => handleSocialLinkClick(socialMedia.link)}
+                cursor= "pointer"
+              >
+                <Icon as={socialMedia.icon} className="icon" boxSize={8} />
+              </Circle>
+            ))}
+          </Flex>
+        </motion.div>
       </Flex>
 
-      <Flex></Flex>
+      <Flex>
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2 }}
+          key={imageSrc}
+        >
+          <Img
+            src={imageSrc}
+            width="400px"
+            height="400px"
+            alt="Person Image"
+          ></Img>
+        </motion.div>
+      </Flex>
     </Flex>
-    // <Flex
-    //     direction="column"
-    //     alignItems="center"
-    //     borderRadius="lg"
-    //     boxShadow="lg"
-    //     bg="black"
-    //     padding={10}
-    //   >
-    //     <Heading
-    //       as="h1"
-    //       size="xl"
-    //       marginBottom="1rem"
-    //     >
-    //      Bonjour.
-    //      Ketul here
-    //     </Heading>
-    //     <motion.div
-    //       initial={{ opacity: 0, y: 20 }}
-    //       animate={{ opacity: 1, y: 0 }}
-    //       transition={{ duration: 1, delay: 0.5 }}
-    //     >
-    //       <Text
-    //         fontSize="lg"
-    //       >
-    //         I'm a passionate software developer, and this is my
-    //         tech-inspired portfolio website.
-    //       </Text>
-    //     </motion.div>
-    //     <motion.div
-    //       initial={{ opacity: 0, scale: 0.8 }}
-    //       animate={{ opacity: 1, scale: 1 }}
-    //       transition={{ duration: 1, delay: 1 }}
-    //       style={{ marginTop: "2rem" }}
-    //     >
-    //       <Text
-    //         fontSize="lg"
-    //       >
-    //         Explore my projects, coding journey, and more.
-    //       </Text>
-    //     </motion.div>
-    //   </Flex>
   );
 }

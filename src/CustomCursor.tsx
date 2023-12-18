@@ -26,7 +26,7 @@ const AimOuterRing = styled.div`
   height: 28px;
   border: 3px solid rgba(0, 255, 0, 0.7); /* Green outer ring color */
   border-radius: 50%;
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
