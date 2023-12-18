@@ -35,8 +35,8 @@ export default function Welcome() {
 
   const imageSrc =
     colorMode === "dark"
-      ? "../src/assets/images/Person_Night.png"
-      : "../src/assets/images/Person_Day.png";
+      ? "/src/assets/images/Person_Night.png"
+      : "Person_Day.png";
 
   const gradientStyle = {
     backgroundImage: `linear-gradient(to right, ${
