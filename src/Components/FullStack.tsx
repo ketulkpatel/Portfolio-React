@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import {  useInView } from "react-intersection-observer";
 
 export default function FullStack() {
-  const imageSrc = "/src/assets/images/FullStack.png";
+  const imageSrc = "/FullStack.png";
   const [ref, inView] = useInView();
   return (
     <Flex
