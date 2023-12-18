@@ -1,11 +1,8 @@
 import {
   Flex,
   Heading,
-  VStack,
-  HStack,
   Text,
-  useColorMode,
-  Img,
+  Image
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import {  useInView } from "react-intersection-observer";
@@ -27,12 +24,12 @@ export default function FullStack() {
           transition={{ duration: 2 }}
           key={imageSrc}
         >
-          <Img
+          <Image
             src={imageSrc}
             width="400px"
             height="400px"
             alt="Person Image"
-          ></Img>
+          ></Image>
         </motion.div>
       </Flex>
       <Flex direction="column" fontFamily="monospace">

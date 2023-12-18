@@ -115,12 +115,12 @@ export default function Welcome() {
           transition={{ duration: 2 }}
           key={imageSrc}
         >
-          <Img
+          <img
             src={imageSrc}
             width="400px"
             height="400px"
             alt="Person Image"
-          ></Img>
+          ></img>
         </motion.div>
       </Flex>
     </Flex>
