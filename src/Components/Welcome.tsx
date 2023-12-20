@@ -26,17 +26,35 @@ export default function Welcome() {
 
   const socialMediaLinks = [
     { name: "GitHub", link: "https://github.com/ketulkpatel", icon: FaGithub },
-    { name: "LinkedIn", link: "https://www.linkedin.com/in/ketul-patel-61264b188/", icon: FaLinkedin },
-    { name: "Outlook", link: "mailto:ketul.patel6@outlook.com", icon: PiMicrosoftOutlookLogoFill },
-    { name: "Twitter", link: "https://twitter.com/ketulpatel455", icon: FaTwitter },
-    { name: "Facebook", link: "https://www.facebook.com/ketul.patel.94801116/", icon: FaFacebook },
-    { name: "Instagram", link: "https://www.instagram.com/the_ketul_patel/", icon: FaInstagram },
+    {
+      name: "LinkedIn",
+      link: "https://www.linkedin.com/in/ketul-patel-61264b188/",
+      icon: FaLinkedin,
+    },
+    {
+      name: "Outlook",
+      link: "mailto:ketul.patel6@outlook.com",
+      icon: PiMicrosoftOutlookLogoFill,
+    },
+    {
+      name: "Twitter",
+      link: "https://twitter.com/ketulpatel455",
+      icon: FaTwitter,
+    },
+    {
+      name: "Facebook",
+      link: "https://www.facebook.com/ketul.patel.94801116/",
+      icon: FaFacebook,
+    },
+    {
+      name: "Instagram",
+      link: "https://www.instagram.com/the_ketul_patel/",
+      icon: FaInstagram,
+    },
   ];
 
   const imageSrc =
-    colorMode === "dark"
-      ? "/Person_Night.png"
-      : "/Person_Day.png";
+    colorMode === "dark" ? "/Person_Night.png" : "/Person_Day.png";
 
   const gradientStyle = {
     backgroundImage: `linear-gradient(to right, ${
@@ -99,7 +117,7 @@ export default function Welcome() {
                 size={12}
                 className={`social-link social-link-${index}`}
                 onClick={() => handleSocialLinkClick(socialMedia.link)}
-                cursor= "pointer"
+                cursor="pointer"
               >
                 <Icon as={socialMedia.icon} className="icon" boxSize={8} />
               </Circle>
