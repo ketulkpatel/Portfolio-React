@@ -1,5 +1,19 @@
-import { Box, Button, Text, useColorMode } from "@chakra-ui/react";
+import { Box, Button, Text, useColorMode,  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  List,
+  ListItem,
+  Menu,
+  MenuButton,
+  Portal,
+  MenuList,
+  MenuItem, } from "@chakra-ui/react";
+import { useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { MdMenu } from "react-icons/md";
 
 export default function NavOptions() {
 
@@ -13,6 +27,11 @@ export default function NavOptions() {
     { label: "Contact", to: "/", color: "blue.500" },
     { label: "Resume", to: "/", color: "purple.500" },
   ];
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
   
   return (
     <Box
@@ -21,7 +40,12 @@ export default function NavOptions() {
       marginLeft="auto"
       textAlign="center"
       alignItems="center"
+      padding={3}
     >
+      <Box
+        display={{ base: 'none', md: 'flex' }}
+        flexDirection="row"
+      >
       {navLinks.map((link) => (
         <Box
           key={link.label}
@@ -45,6 +69,7 @@ export default function NavOptions() {
           <Text>{link.label}</Text>
         </Box>
       ))}
+
       <Button
         padding={5}
         onClick={toggleColorMode}
@@ -62,8 +87,61 @@ export default function NavOptions() {
           },
         }}
       >
+        
         <Box as={colorMode === "light" ? FaSun : FaMoon} />
       </Button>
+      </Box>
+      <Menu>
+  <MenuButton as={MdMenu} size="20"></MenuButton>
+  <Portal>
+    <MenuList backgroundColor="black">
+    {navLinks.map((link) => (
+        <MenuItem textColor={link.color} backgroundColor="black" border="none" _hover= {{
+          textColor : `${link.color}`
+        }}>
+        {link.label}
+                </MenuItem>
+      ))}
+    </MenuList>
+  </Portal>
+</Menu>
+
+      
+      {/* <Drawer
+        isOpen={isDrawerOpen}
+        placement="right"
+        onClose={handleDrawerToggle}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Menu</DrawerHeader>
+          <DrawerBody>
+            {navLinks.map((link) => (
+              <Box
+                key={link.label}
+                style={{
+                  padding: "0.5rem 1.5rem",
+                  textDecoration: "none",
+                  borderRadius: "10px",
+                  fontWeight: "15px",
+                  transition: "background-color 0.2s, transform 0.2s",
+                  fontSize: "1.0rem",
+                  cursor: "pointer",
+                }}
+                _hover={{
+                  transform: "translateX(5px)",
+                  bgColor: `${link.color}`,
+                  boxShadow: `0 0 10px rgba(0, 0, 0, 0.5)`,
+                  fontWeight: "bold",
+                }}
+              >
+                <Text>{link.label}</Text>
+              </Box>
+            ))}
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer> */}
     </Box>
   );
 }

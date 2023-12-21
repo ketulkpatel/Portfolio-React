@@ -74,7 +74,7 @@ export default function Welcome() {
       minHeight="100vh"
       width="100%"
       justifyContent="space-evenly"
-      paddingTop="75"
+      alignItems="center"
     >
       <Flex direction="column" fontFamily="monospace">
         <motion.div

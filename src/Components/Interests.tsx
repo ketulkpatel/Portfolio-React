@@ -140,7 +140,6 @@ export default function Interests() {
     <Flex
       minHeight="100vh"
       width="100%"
-      paddingTop="75"
       alignItems="center"
       justifyContent="space-between"
       padding="10"
@@ -152,6 +151,7 @@ export default function Interests() {
           width="33.33%"
           flexDirection="column"
           alignItems="center"
+          key = {index}
         >
           <Text
             fontFamily="mono"
@@ -170,8 +170,10 @@ export default function Interests() {
                 : "0 6px 8px rgba(255, 255, 255, 0.7)"
             }
             flexDirection="column"
+            alignItems="center"
           >
             <motion.div
+            
               initial={{
                 opacity: 0,
                 x: section.image.x_before,
@@ -187,13 +189,14 @@ export default function Interests() {
                   : {}
               }
               transition={{ duration: 2 }}
-              key={section.image.name}
+              key={`image-${index}`}
             >
               <Image
                 src={section.image.name}
-                width="400px"
-                height="400px"
-                alt="Person Image"
+                width="300px"
+                height="300px"
+                alt={section.name}
+                key = {section.image.name}
               ></Image>
             </motion.div>
             <motion.div
@@ -212,14 +215,14 @@ export default function Interests() {
                   : {}
               }
               transition={{ duration: 2 }}
-              key={section.image.name}
+              key={`skills-${index}`}
             >
               <Flex
                 maxWidth="100%"
                 justifyContent="center"
                 gap="5"
                 flexWrap="wrap"
-                margin="7"
+                margin="5"
               >
                 {section.skills.name.map((skill, index) => (
                   <Tooltip key={index} label={skill.name} placement="bottom">
