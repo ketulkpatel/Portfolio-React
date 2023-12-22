@@ -142,7 +142,18 @@ export default function Interests() {
     });
     return { ref, inView };
   });
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [activeSkillName, setActiveSkillName] = useState<string | null>(null);
 
+  const handleClick = (skillName: string) => {
+    if (activeSkillName === skillName) {
+      onClose();
+      setActiveSkillName(null);
+    } else {
+      onOpen();
+      setActiveSkillName(skillName);
+    }
+  };
   const { colorMode } = useColorMode();
   return (
     <Flex
@@ -232,8 +243,9 @@ export default function Interests() {
                 margin="5"
               >
                 {section.skills.name.map((skill, index) => (
-                  <Tooltip key={index} label={skill.name} placement="bottom"  closeOnClick = {false}>
-                    <span >
+                  <Tooltip key={index} label={skill.name} placement="bottom" isOpen={isOpen && skill.name === activeSkillName}
+                  onClose={onClose}>
+                    <span onClick={() => handleClick(skill.name)} >
                       <Icon
                         as={skill.icon}
                         boxSize={10}
