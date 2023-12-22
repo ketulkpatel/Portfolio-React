@@ -75,10 +75,8 @@ export default function Welcome() {
       maxWidth="100%" 
       alignItems="center"
       flexDirection={{base : "column", md: "row"}}
-      padding={[5, 20]}
-       
     >
-      <Flex direction="column" fontFamily="monospace" flex="1">
+      <Flex padding={[7, 20]} direction="column" fontFamily="monospace">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -91,7 +89,7 @@ export default function Welcome() {
             I'm <span style={gradientStyle}>Ketul Patel</span>{" "}
             <Icon as={BsPersonWorkspace} boxSize={[4, 5]}></Icon>. Full Stack
             Developer,
-            Cloud Learner & Machine Learning Enthusiastic.
+            Cloud Learner <br></br>& Machine Learning Enthusiastic.
           </Text>
           <Flex gap={20}>
             <Icon as={MdOutlineFastfood} boxSize={[4, 6]}></Icon>
@@ -126,7 +124,7 @@ export default function Welcome() {
         </motion.div>
       </Flex>
 
-      <Flex flex="1" justifyContent="center" >
+      <Flex>
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}

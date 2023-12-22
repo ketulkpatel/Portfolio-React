@@ -8,6 +8,7 @@ import {
   Icon,
   Tooltip,
   useColorMode,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -40,6 +41,7 @@ import {
   FaJava,
   FaNode,
 } from "react-icons/fa6";
+import { useState } from "react";
 
 export default function Interests() {
   const cloudSkillIcons = [
@@ -230,8 +232,8 @@ export default function Interests() {
                 margin="5"
               >
                 {section.skills.name.map((skill, index) => (
-                  <Tooltip key={index} label={skill.name} placement="bottom">
-                    <span>
+                  <Tooltip key={index} label={skill.name} placement="bottom"  closeOnClick = {false}>
+                    <span >
                       <Icon
                         as={skill.icon}
                         boxSize={10}
