@@ -86,9 +86,9 @@ export default function Interests() {
       name: "Cloud Computing",
       image: {
         name: imageCloud,
-        x_before: 0,
+        x_before: -100,
         x_after: 0,
-        y_before: -100,
+        y_before: 0,
         y_after: 0,
       },
       skills: {
@@ -134,7 +134,11 @@ export default function Interests() {
       },
     },
   ];
-  const [ref, inView] = useInView();
+  const sectionRefs = sections.map(() => {
+    const [ref, inView] = useInView({});
+    return { ref, inView };
+  });
+
   const { colorMode } = useColorMode();
   return (
     <Flex
@@ -144,11 +148,12 @@ export default function Interests() {
       justifyContent="space-between"
       padding="10"
       gap="5"
+      flexDirection= {["column", "row"]}
     >
       {sections.map((section, index) => (
         <Flex
-          ref={ref}
-          width="33.33%"
+          ref={sectionRefs[index].ref}
+          width={["100%", "33.33%"]}
           flexDirection="column"
           alignItems="center"
           key = {index}
@@ -172,6 +177,7 @@ export default function Interests() {
             flexDirection="column"
             alignItems="center"
           >
+            {sectionRefs[index].inView &&  (
             <motion.div
             
               initial={{
@@ -179,26 +185,25 @@ export default function Interests() {
                 x: section.image.x_before,
                 y: section.image.y_before,
               }}
-              animate={
-                inView
-                  ? {
+              animate={{
                       opacity: 1,
                       x: section.image.x_after,
                       y: section.image.y_after,
                     }
-                  : {}
+                
               }
               transition={{ duration: 2 }}
-              key={`image-${index}`}
+              key = { section.image.name }
             >
               <Image
                 src={section.image.name}
                 width="300px"
                 height="300px"
                 alt={section.name}
-                key = {section.image.name}
+                key = {index}
               ></Image>
-            </motion.div>
+            </motion.div> )}
+            {sectionRefs[index].inView && (
             <motion.div
               initial={{
                 opacity: 0,
@@ -206,16 +211,14 @@ export default function Interests() {
                 y: section.skills.y_before,
               }}
               animate={
-                inView
-                  ? {
+                 {
                       opacity: 1,
                       x: section.skills.x_after,
                       y: section.skills.y_after,
                     }
-                  : {}
               }
               transition={{ duration: 2 }}
-              key={`skills-${index}`}
+              key = {index}
             >
               <Flex
                 maxWidth="100%"
@@ -239,7 +242,7 @@ export default function Interests() {
                   </Tooltip>
                 ))}
               </Flex>
-            </motion.div>
+            </motion.div> )}
           </Flex>
         </Flex>
       ))}

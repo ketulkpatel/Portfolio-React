@@ -72,73 +72,73 @@ export default function Welcome() {
   return (
     <Flex
       minHeight="100vh"
-      width="100%"
+      maxWidth="100%" 
       justifyContent="space-evenly"
       alignItems="center"
+      
+      flexDirection={{base : "column", md: "row"}}
     >
-      <Flex direction="column" fontFamily="monospace">
+      <Flex padding={[7, 20]} direction="column" alignItems="center" justifyContent="center" fontFamily="monospace" flex="1">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 2 }}
         >
-          <Heading as="h1">
-            Hello <Icon as={MdOutlineWavingHand} boxSize={8}></Icon> ,
-          </Heading>
-          <Text fontSize="xl">
-            I'm <span style={gradientStyle}>Ketul Patel</span>{" "}
-            <Icon as={BsPersonWorkspace} boxSize={5}></Icon>. Full Stack
-            Developer,
+          <Text fontSize={[24, 40]} fontWeight="bold">
+            Hello <Icon as={MdOutlineWavingHand} boxSize={[6, 8]}></Icon> ,
           </Text>
-          <Text fontSize="xl">
+          <Text fontSize={["md" ,"xl"]}>
+            I'm <span style={gradientStyle}>Ketul Patel</span>{" "}
+            <Icon as={BsPersonWorkspace} boxSize={[4, 5]}></Icon>. Full Stack
+            Developer,
             Cloud Learner & Machine Learning Enthusiastic.
           </Text>
           <Flex gap={20}>
-            <Icon as={MdOutlineFastfood} boxSize={6}></Icon>
-            <Icon as={MdAirlineSeatIndividualSuite} boxSize={6}></Icon>
-            <Icon as={FaCode} boxSize={6}></Icon>
-            <Icon as={BsArrowRepeat} boxSize={6}></Icon>
+            <Icon as={MdOutlineFastfood} boxSize={[4, 6]}></Icon>
+            <Icon as={MdAirlineSeatIndividualSuite} boxSize={[4, 6]}></Icon>
+            <Icon as={FaCode} boxSize={[4, 6]}></Icon>
+            <Icon as={BsArrowRepeat} boxSize={[4, 6]}></Icon>
           </Flex>
           <Flex gap={12}>
-            <Text>eat();</Text>
-            <Text>sleep();</Text>
-            <Text>code();</Text>
-            <Text>repeat();</Text>
+            <Text fontSize={["xs" ,"sm"]}>eat();</Text>
+            <Text fontSize={["xs" ,"sm"]}>sleep();</Text>
+            <Text fontSize={["xs" ,"sm"]}>code();</Text>
+            <Text fontSize={["xs" ,"sm"]}>repeat();</Text>
           </Flex>
-          <Flex marginTop={10}>
-            <Text fontSize="22" fontFamily="monospace" fontStyle="oblique">
+          <Flex marginTop={[6,10]}>
+            <Text fontSize={[18, 22]} fontFamily="monospace" fontStyle="oblique">
               CONNECT WITH ME
             </Text>
           </Flex>
-          <Flex marginLeft={-10} marginTop="3" justifyContent="space-evenly">
+          <Flex marginTop="3" gap = {[3, 7]}>
             {socialMediaLinks.map((socialMedia, index) => (
               <Circle
                 key={index}
-                size={12}
+                size={[8, 12]}
                 className={`social-link social-link-${index}`}
                 onClick={() => handleSocialLinkClick(socialMedia.link)}
                 cursor="pointer"
               >
-                <Icon as={socialMedia.icon} className="icon" boxSize={8} />
+                <Icon as={socialMedia.icon} className="icon" boxSize={[6, 8]} />
               </Circle>
             ))}
           </Flex>
         </motion.div>
       </Flex>
 
-      <Flex>
+      <Flex flex="1" justifyContent="center" >
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 2 }}
           key={imageSrc}
         >
-          <img
+          <Img
             src={imageSrc}
-            width="400px"
-            height="400px"
+            width= {["250px" , "400px"]}
+            height= {["250px" , "400px"]}
             alt="Person Image"
-          ></img>
+          ></Img>
         </motion.div>
       </Flex>
     </Flex>

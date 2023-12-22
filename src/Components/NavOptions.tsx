@@ -1,4 +1,16 @@
-import { Box, Button, Text, useColorMode,  Drawer,
+import {
+  AddIcon,
+  EditIcon,
+  ExternalLinkIcon,
+  HamburgerIcon,
+  RepeatIcon,
+} from "@chakra-ui/icons";
+import {
+  Box,
+  Button,
+  Text,
+  useColorMode,
+  Drawer,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -10,13 +22,14 @@ import { Box, Button, Text, useColorMode,  Drawer,
   MenuButton,
   Portal,
   MenuList,
-  MenuItem, } from "@chakra-ui/react";
+  MenuItem,
+  IconButton,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { MdMenu } from "react-icons/md";
 
 export default function NavOptions() {
-
   const { toggleColorMode, colorMode } = useColorMode();
   const navLinks = [
     { label: "Home", to: "/", color: "red.500" },
@@ -32,116 +45,63 @@ export default function NavOptions() {
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
-  
+
   return (
     <Box
       display="flex"
-      flexDirection="row"
+      flexDirection={{ base: "column", md: "row" }}
       marginLeft="auto"
       textAlign="center"
       alignItems="center"
       padding={3}
     >
-      <Box
-        display={{ base: 'none', md: 'flex' }}
-        flexDirection="row"
-      >
-      {navLinks.map((link) => (
-        <Box
-          key={link.label}
-          style={{
-            display: "block",
-            padding: "0.5rem 1.5rem",
-            textDecoration: "none",
-            borderRadius: "10px",
-            fontWeight: "15px",
-            transition: "background-color 0.2s, transform 0.2s",
-            fontSize: "1.0rem",
-            cursor: "pointer",
-          }}
+      <Box display={{ base: "none", md: "flex" }} flexDirection="row">
+        {navLinks.map((link) => (
+          <Box
+            key={link.label}
+            style={{
+              display: "block",
+              padding: "0.5rem 1.5rem",
+              textDecoration: "none",
+              borderRadius: "10px",
+              fontWeight: "15px",
+              transition: "background-color 0.2s, transform 0.2s",
+              fontSize: "1.0rem",
+              cursor: "pointer",
+            }}
+            _hover={{
+              transform: "translateX(5px)",
+              bgColor: `${link.color}`,
+              boxShadow: `0 0 10px rgba(0, 0, 0, 0.5)`,
+              fontWeight: "bold",
+            }}
+          >
+            <Text>{link.label}</Text>
+          </Box>
+        ))}
+      </Box>
+
+      <Box>
+        <Button
+          padding={2}
+          onClick={toggleColorMode}
+          borderRadius={"full"}
+          size="md"
+          bg={colorMode}
           _hover={{
-            transform: "translateX(5px)",
-            bgColor: `${link.color}`,
-            boxShadow: `0 0 10px rgba(0, 0, 0, 0.5)`,
-            fontWeight: "bold",
+            transform: "scale(1.30)",
+            transition: "transform 0.4s",
+          }}
+          sx={{
+            "&:active, &:focus": {
+              bg: "transparent", // Set the background color to 'transparent'
+              boxShadow: "none", // Optionally remove the box shadow
+            },
           }}
         >
-          <Text>{link.label}</Text>
-        </Box>
-      ))}
-
-      <Button
-        padding={5}
-        onClick={toggleColorMode}
-        borderRadius={"full"}
-        size="md"
-        bg={colorMode}
-        _hover={{
-          transform: "scale(1.30)",
-          transition: "transform 0.4s",
-        }}
-        sx={{
-          "&:active, &:focus": {
-            bg: "transparent", // Set the background color to 'transparent'
-            boxShadow: "none", // Optionally remove the box shadow
-          },
-        }}
-      >
-        
-        <Box as={colorMode === "light" ? FaSun : FaMoon} />
-      </Button>
+          <Box as={colorMode === "light" ? FaSun : FaMoon} />
+        </Button>
       </Box>
-      <Menu>
-  <MenuButton as={MdMenu} size="20"></MenuButton>
-  <Portal>
-    <MenuList backgroundColor="black">
-    {navLinks.map((link) => (
-        <MenuItem textColor={link.color} backgroundColor="black" border="none" _hover= {{
-          textColor : `${link.color}`
-        }}>
-        {link.label}
-                </MenuItem>
-      ))}
-    </MenuList>
-  </Portal>
-</Menu>
-
-      
-      {/* <Drawer
-        isOpen={isDrawerOpen}
-        placement="right"
-        onClose={handleDrawerToggle}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Menu</DrawerHeader>
-          <DrawerBody>
-            {navLinks.map((link) => (
-              <Box
-                key={link.label}
-                style={{
-                  padding: "0.5rem 1.5rem",
-                  textDecoration: "none",
-                  borderRadius: "10px",
-                  fontWeight: "15px",
-                  transition: "background-color 0.2s, transform 0.2s",
-                  fontSize: "1.0rem",
-                  cursor: "pointer",
-                }}
-                _hover={{
-                  transform: "translateX(5px)",
-                  bgColor: `${link.color}`,
-                  boxShadow: `0 0 10px rgba(0, 0, 0, 0.5)`,
-                  fontWeight: "bold",
-                }}
-              >
-                <Text>{link.label}</Text>
-              </Box>
-            ))}
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer> */}
     </Box>
   );
 }
