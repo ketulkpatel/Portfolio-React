@@ -135,7 +135,9 @@ export default function Interests() {
     },
   ];
   const sectionRefs = sections.map(() => {
-    const [ref, inView] = useInView({});
+    const [ref, inView] = useInView({
+      triggerOnce: true,
+    });
     return { ref, inView };
   });
 

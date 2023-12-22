@@ -73,12 +73,12 @@ export default function Welcome() {
     <Flex
       minHeight="100vh"
       maxWidth="100%" 
-      justifyContent="space-evenly"
       alignItems="center"
-      
       flexDirection={{base : "column", md: "row"}}
+      padding={[5, 20]}
+       
     >
-      <Flex padding={[7, 20]} direction="column" alignItems="center" justifyContent="center" fontFamily="monospace" flex="1">
+      <Flex direction="column" fontFamily="monospace" flex="1">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
