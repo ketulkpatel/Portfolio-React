@@ -166,7 +166,7 @@ export default function Interests() {
             fontFamily="mono"
             fontWeight="medium"
             marginBottom="5"
-            fontSize="24"
+            fontSize={[18, 24]}
           >
             {section.name}
           </Text>
