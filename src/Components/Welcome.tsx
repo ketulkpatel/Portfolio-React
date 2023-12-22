@@ -72,11 +72,11 @@ export default function Welcome() {
   return (
     <Flex
       minHeight="100vh"
-      maxWidth="100%" 
+      maxWidth="100%"
       alignItems="center"
-      flexDirection={{base : "column", md: "row"}}
+      flexDirection={{ base: "column", md: "row" }}
     >
-      <Flex padding={[7, 20]} direction="column" fontFamily="monospace">
+      <Flex padding={[10, 20]} direction="column" fontFamily="monospace">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -85,11 +85,10 @@ export default function Welcome() {
           <Text fontSize={[24, 40]} fontWeight="bold">
             Hello <Icon as={MdOutlineWavingHand} boxSize={[6, 8]}></Icon> ,
           </Text>
-          <Text fontSize={["md" ,"xl"]}>
+          <Text fontSize={["md", "xl"]}>
             I'm <span style={gradientStyle}>Ketul Patel</span>{" "}
             <Icon as={BsPersonWorkspace} boxSize={[4, 5]}></Icon>. Full Stack
-            Developer,
-            Cloud Learner <br></br>& Machine Learning Enthusiastic.
+            Developer, Cloud Learner <br></br>& Machine Learning Enthusiastic.
           </Text>
           <Flex gap={20}>
             <Icon as={MdOutlineFastfood} boxSize={[4, 6]}></Icon>
@@ -98,17 +97,21 @@ export default function Welcome() {
             <Icon as={BsArrowRepeat} boxSize={[4, 6]}></Icon>
           </Flex>
           <Flex gap={12}>
-            <Text fontSize={["xs" ,"sm"]}>eat();</Text>
-            <Text fontSize={["xs" ,"sm"]}>sleep();</Text>
-            <Text fontSize={["xs" ,"sm"]}>code();</Text>
-            <Text fontSize={["xs" ,"sm"]}>repeat();</Text>
+            <Text fontSize={["xs", "sm"]}>eat();</Text>
+            <Text fontSize={["xs", "sm"]}>sleep();</Text>
+            <Text fontSize={["xs", "sm"]}>code();</Text>
+            <Text fontSize={["xs", "sm"]}>repeat();</Text>
           </Flex>
-          <Flex marginTop={[6,10]}>
-            <Text fontSize={[18, 22]} fontFamily="monospace" fontStyle="oblique">
+          <Flex marginTop={[6, 10]}>
+            <Text
+              fontSize={[18, 22]}
+              fontFamily="monospace"
+              fontStyle="oblique"
+            >
               CONNECT WITH ME
             </Text>
           </Flex>
-          <Flex marginTop="3" gap = {[3, 7]}>
+          <Flex marginTop="3" gap={[3, 7]}>
             {socialMediaLinks.map((socialMedia, index) => (
               <Circle
                 key={index}
@@ -133,8 +136,8 @@ export default function Welcome() {
         >
           <Img
             src={imageSrc}
-            width= {["250px" , "400px"]}
-            height= {["250px" , "400px"]}
+            width={["250px", "400px"]}
+            height={["250px", "400px"]}
             alt="Person Image"
           ></Img>
         </motion.div>

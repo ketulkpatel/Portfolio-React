@@ -3,7 +3,6 @@ import Logo from "./Logo";
 import NavOptions from "./NavOptions";
 
 const Navbar = () => {
-
   return (
     <Flex
       padding="0.5rem"

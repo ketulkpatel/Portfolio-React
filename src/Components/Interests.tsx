@@ -154,6 +154,16 @@ export default function Interests() {
       setActiveSkillName(skillName);
     }
   };
+  const handleMouseEnter = (skillName: string) => {
+    onOpen();
+    setActiveSkillName(skillName);
+  };
+
+  const handleMouseLeave = () => {
+    onClose();
+    setActiveSkillName(null);
+  };
+
   const { colorMode } = useColorMode();
   return (
     <Flex
@@ -163,7 +173,7 @@ export default function Interests() {
       justifyContent="space-between"
       padding="10"
       gap="5"
-      flexDirection= {["column", "row"]}
+      flexDirection={["column", "row"]}
     >
       {sections.map((section, index) => (
         <Flex
@@ -171,7 +181,7 @@ export default function Interests() {
           width={["100%", "33.33%"]}
           flexDirection="column"
           alignItems="center"
-          key = {index}
+          key={index}
         >
           <Text
             fontFamily="mono"
@@ -192,73 +202,80 @@ export default function Interests() {
             flexDirection="column"
             alignItems="center"
           >
-            {sectionRefs[index].inView &&  (
-            <motion.div
-            
-              initial={{
-                opacity: 0,
-                x: section.image.x_before,
-                y: section.image.y_before,
-              }}
-              animate={{
-                      opacity: 1,
-                      x: section.image.x_after,
-                      y: section.image.y_after,
-                    }
-                
-              }
-              transition={{ duration: 2 }}
-              key = { section.image.name }
-            >
-              <Image
-                src={section.image.name}
-                width="300px"
-                height="300px"
-                alt={section.name}
-                key = {index}
-              ></Image>
-            </motion.div> )}
             {sectionRefs[index].inView && (
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: section.skills.x_before,
-                y: section.skills.y_before,
-              }}
-              animate={
-                 {
-                      opacity: 1,
-                      x: section.skills.x_after,
-                      y: section.skills.y_after,
-                    }
-              }
-              transition={{ duration: 2 }}
-              key = {index}
-            >
-              <Flex
-                maxWidth="100%"
-                justifyContent="center"
-                gap="5"
-                flexWrap="wrap"
-                margin="5"
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: section.image.x_before,
+                  y: section.image.y_before,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: section.image.x_after,
+                  y: section.image.y_after,
+                }}
+                transition={{ duration: 2 }}
+                key={section.image.name}
               >
-                {section.skills.name.map((skill, index) => (
-                  <Tooltip key={index} label={skill.name} placement="bottom" isOpen={isOpen && skill.name === activeSkillName}
-                  onClose={onClose}>
-                    <span onClick={() => handleClick(skill.name)} >
-                      <Icon
-                        as={skill.icon}
-                        boxSize={10}
-                        key={index}
-                        flexBasis="calc(20% - 20px)"
-                        color={skill.color}
-                        _hover={{ cursor: "pointer" }}
-                      />
-                    </span>
-                  </Tooltip>
-                ))}
-              </Flex>
-            </motion.div> )}
+                <Image
+                  src={section.image.name}
+                  width="300px"
+                  height="300px"
+                  alt={section.name}
+                  key={index}
+                ></Image>
+              </motion.div>
+            )}
+            {sectionRefs[index].inView && (
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: section.skills.x_before,
+                  y: section.skills.y_before,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: section.skills.x_after,
+                  y: section.skills.y_after,
+                }}
+                transition={{ duration: 2 }}
+                key={index}
+              >
+                <Flex
+                  maxWidth="100%"
+                  justifyContent="center"
+                  gap="5"
+                  flexWrap="wrap"
+                  margin="5"
+                >
+                  {section.skills.name.map((skill, index) => (
+                    <Tooltip
+                      key={index}
+                      label={skill.name}
+                      placement="bottom"
+                      isOpen={isOpen && skill.name === activeSkillName}
+                      onClose={onClose}
+                      closeOnClick={false}
+                    >
+                      <span
+                        onClick={() => handleClick(skill.name)}
+                        onMouseEnter={() => handleMouseEnter(skill.name)}
+                        onMouseLeave={handleMouseLeave}
+                      >
+                        <Icon
+                          as={skill.icon}
+                          boxSize={10}
+                          key={index}
+                          flexBasis="calc(20% - 20px)"
+                          color={skill.color}
+                          _hover={{ cursor: "pointer" }}
+                        />
+                      </span>
+                    </Tooltip>
+                  ))}
+                </Flex>
+              </motion.div>
+            )}
           </Flex>
         </Flex>
       ))}
