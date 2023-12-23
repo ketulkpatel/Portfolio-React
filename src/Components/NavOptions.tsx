@@ -103,24 +103,9 @@ export default function NavOptions() {
         
       </Box>
       <Box display={{ base: "flex", md: "none" }} >
-        <Button
-          // padding={2}
-          borderRadius={"full"}
-          // size="lg"
-          bg={colorMode}
-          sx={{
-            bg: ({ colorMode }) => (colorMode === 'dark' ? 'transparent' : 'transparent'),
-            "&:active, &:focus": {
-              bg: "transparent", // Set the background color to 'transparent'
-              boxShadow: "none", // Optionally remove the box shadow
-            },
-          }}
-          onClick={onOpen}
-        >
-          <Box boxSize={7} as={MdMenu} />
-        </Button>
         
-        
+          <Box boxSize={7} as={MdMenu} onClick={onOpen}/>
+              
       </Box>
       <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
         <DrawerContent justifyContent="center" textColor={colorMode === "dark" ? "black" : "white"} backgroundColor={colorMode === "light" ? "black" : "white"}>
