@@ -80,7 +80,7 @@ export default function NavOptions() {
         ))}
       </Box>
       <Box padding={2}>
-          <Box cursor="pointer" as={colorMode === "light" ? FaSun : FaMoon} boxSize={4} onClick={toggleColorMode}/>        
+          <Box cursor="pointer" as={colorMode === "light" ? FaSun : FaMoon} boxSize={[5, 4]} onClick={toggleColorMode}/>        
       </Box>
       <Box padding={2} display={{ base: "flex", md: "none" }} >
           <Box boxSize={7} as={MdMenu} onClick={onOpen}/>
