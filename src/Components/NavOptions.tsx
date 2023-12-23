@@ -3,6 +3,7 @@ import {
   EditIcon,
   ExternalLinkIcon,
   HamburgerIcon,
+  Icon,
   RepeatIcon,
 } from "@chakra-ui/icons";
 import {
@@ -24,6 +25,7 @@ import {
   MenuList,
   MenuItem,
   IconButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
@@ -40,16 +42,13 @@ export default function NavOptions() {
     { label: "Contact", to: "/", color: "blue.500" },
     { label: "Resume", to: "/", color: "purple.500" },
   ];
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const handleDrawerToggle = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
 
   return (
     <Box
       display="flex"
-      flexDirection={{ base: "column", md: "row" }}
+      flexDirection= "row"
       marginLeft="auto"
       textAlign="center"
       alignItems="center"
@@ -80,8 +79,7 @@ export default function NavOptions() {
           </Box>
         ))}
       </Box>
-
-      <Box>
+      <Box >
         <Button
           padding={2}
           onClick={toggleColorMode}
@@ -101,7 +99,51 @@ export default function NavOptions() {
         >
           <Box as={colorMode === "light" ? FaSun : FaMoon} />
         </Button>
+        
+        
       </Box>
+      <Box >
+        <Button
+          padding={2}
+          borderRadius={"full"}
+          size="md"
+          bg={colorMode}
+          sx={{
+            "&:active, &:focus": {
+              bg: "transparent", // Set the background color to 'transparent'
+              boxShadow: "none", // Optionally remove the box shadow
+            },
+          }}
+          onClick={onOpen}
+        >
+          <Box as={MdMenu} />
+        </Button>
+        
+        
+      </Box>
+      <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
+        <DrawerContent justifyContent="center" textColor={colorMode === "dark" ? "black" : "white"} backgroundColor={colorMode === "light" ? "black" : "white"}>
+        <DrawerCloseButton color={colorMode === "light" ? "white" : "black"}/>
+          <DrawerBody>
+          {navLinks.map((link) => (
+          <Box
+            key={link.label}
+            style={{
+              display: "block",
+              padding: "0.5rem 1.5rem",
+              textDecoration: "none",
+              borderRadius: "10px",
+              fontWeight: "15px",
+              fontSize: "1.0rem",
+              
+            }}
+          >
+            <Text>{link.label}</Text>
+          </Box>
+        ))}
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </Box>
   );
 }
