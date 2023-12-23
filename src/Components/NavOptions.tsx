@@ -102,13 +102,14 @@ export default function NavOptions() {
         
         
       </Box>
-      <Box >
+      <Box display={{ base: "flex", md: "none" }} >
         <Button
           padding={2}
           borderRadius={"full"}
-          size="md"
+          size="lg"
           bg={colorMode}
           sx={{
+            bg: ({ colorMode }) => (colorMode === 'dark' ? 'transparent' : 'transparent'),
             "&:active, &:focus": {
               bg: "transparent", // Set the background color to 'transparent'
               boxShadow: "none", // Optionally remove the box shadow
