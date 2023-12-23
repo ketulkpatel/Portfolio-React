@@ -104,9 +104,9 @@ export default function NavOptions() {
       </Box>
       <Box display={{ base: "flex", md: "none" }} >
         <Button
-          padding={2}
+          // padding={2}
           borderRadius={"full"}
-          size="lg"
+          // size="lg"
           bg={colorMode}
           sx={{
             bg: ({ colorMode }) => (colorMode === 'dark' ? 'transparent' : 'transparent'),
@@ -117,7 +117,7 @@ export default function NavOptions() {
           }}
           onClick={onOpen}
         >
-          <Box as={MdMenu} />
+          <Box boxSize={7} as={MdMenu} />
         </Button>
         
         
