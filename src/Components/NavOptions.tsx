@@ -79,33 +79,11 @@ export default function NavOptions() {
           </Box>
         ))}
       </Box>
-      <Box >
-        <Button
-          padding={2}
-          onClick={toggleColorMode}
-          borderRadius={"full"}
-          size="md"
-          bg={colorMode}
-          _hover={{
-            transform: "scale(1.30)",
-            transition: "transform 0.4s",
-          }}
-          sx={{
-            "&:active, &:focus": {
-              bg: "transparent", // Set the background color to 'transparent'
-              boxShadow: "none", // Optionally remove the box shadow
-            },
-          }}
-        >
-          <Box as={colorMode === "light" ? FaSun : FaMoon} />
-        </Button>
-        
-        
+      <Box padding={2}>
+          <Box cursor="pointer" as={colorMode === "light" ? FaSun : FaMoon} boxSize={4} onClick={toggleColorMode}/>        
       </Box>
-      <Box display={{ base: "flex", md: "none" }} >
-        
+      <Box padding={2} display={{ base: "flex", md: "none" }} >
           <Box boxSize={7} as={MdMenu} onClick={onOpen}/>
-              
       </Box>
       <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
         <DrawerContent justifyContent="center" textColor={colorMode === "dark" ? "black" : "white"} backgroundColor={colorMode === "light" ? "black" : "white"}>
