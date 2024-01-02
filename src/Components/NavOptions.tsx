@@ -30,20 +30,26 @@ import {
 import { useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { MdMenu } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function NavOptions() {
   const { toggleColorMode, colorMode } = useColorMode();
   const navLinks = [
     { label: "Home", to: "/", color: "red.500" },
-    { label: "Education", to: "/", color: "orange.500" },
+    { label: "Education", to: "/education", color: "orange.500" },
     { label: "Certifications", to: "/", color: "yellow.500" },
     { label: "Experience", to: "/", color: "green.500" },
     { label: "Projects", to: "/", color: "cyan.500" },
     { label: "Contact", to: "/", color: "blue.500" },
     { label: "Resume", to: "/", color: "purple.500" },
   ];
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const navigate = useNavigate();
+
+  const handleNavigation = (url: string) => {
+    navigate(url);
+  };
 
   return (
     <Box
@@ -74,6 +80,7 @@ export default function NavOptions() {
               boxShadow: `0 0 10px rgba(0, 0, 0, 0.5)`,
               fontWeight: "bold",
             }}
+            onClick={() => handleNavigation(link.to)}
           >
             <Text>{link.label}</Text>
           </Box>

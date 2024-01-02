@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Pages/Home'
 import RootLayout from './RootLayout';
+import Education from './Pages/Education';
 
 function App() {
 
@@ -18,8 +19,8 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/experience",
-          element: <Home />,
+          path: "/education",
+          element: <Education />,
         },
       ],
     },
