@@ -46,9 +46,11 @@ export default function NavOptions() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigate = useNavigate();
-
   const handleNavigation = (url: string) => {
+
     navigate(url);
+
+    onClose();
   };
 
   return (
@@ -108,6 +110,7 @@ export default function NavOptions() {
               fontSize: "1.0rem",
               
             }}
+            onClick={() => handleNavigation(link.to)}
           >
             <Text>{link.label}</Text>
           </Box>
