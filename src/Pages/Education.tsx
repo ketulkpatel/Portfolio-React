@@ -80,7 +80,7 @@ export default function Education() {
     fontWeight: "bold",
   };
 
-  const imageSrc = colorMode === 'light' ? "url('./Education_day.png')" : "url('./Education_night.png')";
+  const invertStyle = colorMode === 'dark' ? { filter: 'invert(100%)' } : {};
   const [isBigSize] = useMediaQuery('(min-width: 760px)');
   
   return (
@@ -192,8 +192,7 @@ export default function Education() {
         <div
           style={{
             content: "''",
-            backgroundImage: imageSrc,
-            backgroundRepeat: 'repeat-x',
+            backgroundImage: "url('./Education_day.png')",
             backgroundPosition: 'bottom',
             backgroundSize: 'cover',
             backgroundBlendMode: 'overlay',
@@ -206,6 +205,7 @@ export default function Education() {
             height: '100%',
             opacity: 0.15,
             zIndex: 0,
+            ...invertStyle
           }}
         />)}
       </Flex>
