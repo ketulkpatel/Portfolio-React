@@ -15,8 +15,10 @@ import {
   Icon,
   Center,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import React from "react";
 import { FaAws, FaReact } from "react-icons/fa";
+import "../Components/Welcome.css";
 
 function Certificates() {
   const { colorMode } = useColorMode();
@@ -35,49 +37,77 @@ function Certificates() {
       name: "AWS Developer Associate",
       to: "/",
       image: "./AWS.png",
-      color: "yellow.500",
+      color: "orange.200",
     },
     {
       name: "AWS Cloud Practitioner",
       to: "/education",
       image: "./AWS.png",
-      color: "yellow.500",
+      color: "orange.200",
     },
+    { name: "Neural Networks and Deep Learning", to: "/", image: "./DeepLearning.png", color: "purple.200" },
+    { name: "Improving Deep Neural Networks", to: "/", image: "./DeepLearning.png", color: "gray.200" },
+    { name: "Structuring Machine Learning Projects", to: "/", image: "./DeepLearning.png", color: "blue.300" },
+    { name: "Sequence Models", to: "/", image: "./DeepLearning.png", color: "teal.200" },
     {
-      name: "AWS Developer Associate",
+      name: "Convolutional Neural Networks",
       to: "/certificates",
       image: "./DeepLearning.png",
-      color: "yellow.500",
+      color: "red.300",
     },
-    { name: "AWS Developer Associate", to: "/", color: "green.500" },
-    { name: "AWS Developer Associate", to: "/", color: "cyan.500" },
-    { name: "AWS Developer Associate", to: "/", color: "blue.500" },
+    {
+      name: "Deep Learning Specialization",
+      to: "/certificates",
+      image: "./DeepLearning.png",
+      color: "orange.300",
+    },
+    {
+      name: "Problem Solving (Basic)",
+      to: "/certificates",
+      image: "./HackerRank.png",
+      color: "green.100",
+    },
+    {
+      name: "Python (Basic)",
+      to: "/certificates",
+      image: "./HackerRank.png",
+      color: "green.100",
+    },
+    
   ];
 
   return (
-    <Flex minHeight="100vh" alignItems="center" justifyContent="space-evenly">
-      <Flex width="35%">
-        <Image src="./Certificates.png" width="500px" height="500px"></Image>
-      </Flex>
-      <Flex flexDirection="column" gap="10" width="70%">
-        <Flex alignItems="center" justifyContent="center">
-          <Heading style={gradientStyle}>Certifications</Heading>
+    <Flex minHeight="100vh" alignItems="center">
+      <Flex flexDirection="column" gap="10">
+        <Flex justifyContent="center" textAlign="center">
+          <Heading style={gradientStyle} fontFamily="monospace">CERTIFICATIONS</Heading>
         </Flex>
-        <Flex gap="5" flexWrap="wrap">
+
+        <motion.div
+                initial={{
+                  opacity: 0,
+                  z : -100
+                }}
+                animate={{
+                  opacity: 1,
+                  z: 0
+                }}
+                transition={{ duration: 4 }}
+              >
+        <Flex gap="5" flexWrap="wrap" justifyContent="center" padding="3">
           {certificates.map((certificate, index) => (
             <Card
               size="xs"
+              width="400px"
               padding="2"
-              border={`1px dotted ${colorMode === "light" ? "black" : "white"}`}
+              border={`1px solid ${colorMode === "light" ? "black" : "white"}`}
               borderRadius="lg"
               boxShadow={
                 colorMode === "light"
                   ? "0 6px 8px rgba(0, 0, 0, 0.7)"
                   : "0 6px 8px rgba(255, 255, 255, 0.7)"
               }
-              backgroundColor={colorMode === "light"
-              ? "white"
-              : "white"}
+              backgroundColor={certificate.color}
             >
               <CardBody>
                 <Center>
@@ -88,7 +118,7 @@ function Certificates() {
                   />
                 </Center>
                 <Stack>
-                  <Text fontWeight="bold" fontFamily="monospace" fontSize="lg" textColor="black">
+                  <Text fontWeight="bold" fontFamily="monospace" fontSize="lg" textColor="black" textAlign="center">
                     {certificate.name}
                   </Text>
                 </Stack>
@@ -96,6 +126,7 @@ function Certificates() {
             </Card>
           ))}
         </Flex>
+        </motion.div>
       </Flex>
     </Flex>
   );

@@ -40,7 +40,7 @@ export default function NavOptions() {
     { label: "Certifications", to: "/certificates", color: "yellow.500" },
     { label: "Experience", to: "/", color: "green.500" },
     { label: "Projects", to: "/", color: "cyan.500" },
-    { label: "Contact", to: "/", color: "blue.500" },
+    { label: "Contact", to: "/contact", color: "blue.500" },
     { label: "Resume", to: "/", color: "purple.500" },
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();

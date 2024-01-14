@@ -3,6 +3,7 @@ import Home from './Pages/Home'
 import RootLayout from './RootLayout';
 import Education from './Pages/Education';
 import Certificates from './Pages/Certificates';
+import Contact from './Pages/Contact';
 
 function App() {
 
@@ -26,6 +27,10 @@ function App() {
         {
           path: "/certificates",
           element: <Certificates />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
         },
       ],
     },
