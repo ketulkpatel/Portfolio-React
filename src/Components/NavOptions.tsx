@@ -37,7 +37,7 @@ export default function NavOptions() {
   const navLinks = [
     { label: "Home", to: "/", color: "red.500" },
     { label: "Education", to: "/education", color: "orange.500" },
-    { label: "Certifications", to: "/", color: "yellow.500" },
+    { label: "Certifications", to: "/certificates", color: "yellow.500" },
     { label: "Experience", to: "/", color: "green.500" },
     { label: "Projects", to: "/", color: "cyan.500" },
     { label: "Contact", to: "/", color: "blue.500" },
