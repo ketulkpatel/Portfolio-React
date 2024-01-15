@@ -23,6 +23,8 @@ import {
   useColorMode,
   Text,
 } from "@chakra-ui/react";
+import { IoIosArrowForward } from "react-icons/io";
+
 function Contact() {
   const { colorMode } = useColorMode();
   const gradientStyle = {
@@ -75,20 +77,24 @@ function Contact() {
   });
   const onSubmit = (data: any) => {
     console.log(data);
-    // Handle form submission logic here
   };
   return (
-    <Flex minHeight="100vh" justifyContent="space-evenly" alignItems="center">
-      <Flex flexDirection="column" alignItems="center">
-        <Image src="./Contact.png" width="500px" height="500px"></Image>
-        <Flex gap="5" alignItems="center" justifyContent="flex-end">
+    <Flex minHeight="100vh" justifyContent="space-evenly" alignItems="center" flexDirection={["column", "column", "column", "row"]} padding={[10, 20]}>
+      <Flex flexDirection="column" alignItems="center" padding="7">
+      <Heading style={gradientStyle} fontFamily="monospace">
+      CONNECT WITH ME
+        </Heading>
+        <Image src="./Contact.png" width={["400px", "500px"]} height={["400px", "500px"]}></Image>
+        <Flex gap={["2", "5"]} alignItems="center" justifyContent="flex-end" >
         <Text
               fontSize={[18, 22]}
               fontFamily="monospace"
               fontStyle="oblique"
+              fontWeight="bold"
             >
-              CONNECT WITH ME
-            </Text>
+              Connect
+             </Text>
+            <Icon as={IoIosArrowForward} boxSize="6"></Icon>
         {socialMediaLinks.map((socialMedia, index) => (
             <Circle
               key={index}
@@ -111,7 +117,7 @@ function Contact() {
           CONTACT ME
         </Heading>
         <Flex marginTop="3" gap={[3, 7]}>
-          <Stack spacing={4} width="400px">
+          <Stack spacing={4} width={["auto","400px"]}>
             <FormControl isInvalid={!!formErrors?.get("name")}>
               <FormLabel htmlFor="name">Name</FormLabel>
               <Input
@@ -169,7 +175,7 @@ function Contact() {
             </FormControl>
             
 
-            <Button onClick={onSubmit} colorScheme="teal" mt={4}>
+            <Button onClick={onSubmit} colorScheme="blue" mt={4}>
               Submit
             </Button>
           </Stack>

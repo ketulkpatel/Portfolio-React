@@ -40,9 +40,9 @@ export default function Education() {
         CGPA: "3.98/4.3",
       },
       achievements: [
-        // "Completed Internship as Junior Developer",
-        // "Completed Internship as Junior Developer",
-        // "Completed Internship as Junior Developer",
+        "Completed Internship as Junior Developer",
+        "Completed Internship as Junior Developer",
+        "Completed Internship as Junior Developer",
       ],
       x_before: -100,
       x_after: 0,
@@ -62,9 +62,9 @@ export default function Education() {
         CGPA: "8.34/10",
       },
       achievements: [
-        // "Completed Internship as Junior Developer",
-        // "Completed Internship as Junior Developer",
-        // "Completed Internship as Junior Developer",
+        "Completed Internship as Junior Developer",
+        "Completed Internship as Junior Developer",
+        "Completed Internship as Junior Developer",
       ],
       x_before: 100,
       x_after: 0,
@@ -191,9 +191,9 @@ export default function Education() {
                         ))}
                       </Flex>
                     </motion.div>
-                    <Flex marginLeft="auto" marginTop="-10" >
-                      <Button className="button-7" role="button" backgroundColor="#0095ff">
-                        <Text fontSize="md" fontFamily="monospace">Transcript <Icon as={FaExternalLinkAlt} boxSize="3"></Icon> </Text>
+                    <Flex marginLeft="auto">
+                      <Button backgroundColor="#0095ff" padding="2" height="130%"  width="100%">
+                        <Text fontSize={["xs", "md"]} fontFamily="monospace" >Transcript <Icon as={FaExternalLinkAlt} boxSize="2"></Icon> </Text>
                       </Button>
                     </Flex>
                   </Flex>

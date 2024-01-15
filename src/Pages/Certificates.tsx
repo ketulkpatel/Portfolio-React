@@ -98,7 +98,7 @@ function Certificates() {
           {certificates.map((certificate, index) => (
             <Card
               size="xs"
-              width="400px"
+              width={["300px", "400px"]}
               padding="2"
               border={`1px solid ${colorMode === "light" ? "black" : "white"}`}
               borderRadius="lg"
