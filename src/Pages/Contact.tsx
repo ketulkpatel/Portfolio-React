@@ -22,8 +22,11 @@ import {
   Heading,
   useColorMode,
   Text,
+  Box,
 } from "@chakra-ui/react";
 import { IoIosArrowForward } from "react-icons/io";
+import { useToast } from '@chakra-ui/react';
+import { Spinner } from "@chakra-ui/react";
 
 function Contact() {
   const { colorMode } = useColorMode();
@@ -67,6 +70,7 @@ function Contact() {
   const handleSocialLinkClick = (link: string) => {
     window.open(link, "_blank");
   };
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formErrors, setFormErrors] = useState<Map<string, string>>();
   const [form, setForm] = useState({
@@ -75,11 +79,104 @@ function Contact() {
     subject: "",
     message: "",
   });
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const toast = useToast();
+
+  const showToast = (status: any, description: string) => {
+    toast({
+      title: description,
+      status: status,
+      duration: 5000,
+      isClosable: true,
+    });
   };
+
+  const validateForm = () => {
+    const errors = new Map<string, string>();
+
+    if (!form.name.trim()) {
+      errors.set("name", "Name is required");
+    }
+
+    if (!form.email.trim()) {
+      errors.set("email", "Email is required");
+    } else if (!isValidEmail(form.email.trim())) {
+      errors.set("email", "Invalid email address");
+    }
+
+    if (!form.subject.trim()) {
+      errors.set("subject", "Subject is required");
+    }
+
+    if (!form.message.trim()) {
+      errors.set("message", "Message is required");
+    }
+
+    setFormErrors(errors);
+
+    return errors.size === 0;
+  };
+
+  const isValidEmail = (email: string) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+
+  const onSubmit = async () => {
+
+    if (validateForm()) {
+      try {
+        setIsLoading(true);
+        const emailData = {
+          subject: form.subject,
+          message: `Hi Ketul,\n\n${form.message}\n\nYou can contact me at: ${form.email}\n\nRegards,\n${form.name}`,
+        };
+  
+        const response = await fetch('https://portfolio-b7rr.onrender.com/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(emailData),
+        });
+        if (response.ok) {
+          const data = await response.json();
+          showToast('success', 'Congratulations on successfully reaching out to Ketul!.');
+          setForm({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+          });
+        } else {
+          console.error('Error sending email:', response.statusText);
+          showToast('error', 'Error sending email');
+        }
+      } catch (error: any) {
+        console.error('Error sending email:', error.message);
+        showToast('error', 'Error sending email');
+      } finally {
+        setIsLoading(false);
+      }
+    } 
+  };
+
   return (
     <Flex minHeight="100vh" justifyContent="space-evenly" alignItems="center" flexDirection={["column", "column", "column", "row"]} padding={[10, 20]}>
+    {isLoading && (
+        <Box
+          position="fixed"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          backgroundColor="rgba(255, 255, 255, 0.8)"
+          zIndex="9999"
+        >
+          <Spinner size="xl" color="blue.500" />
+        </Box>
+      )}
       <Flex flexDirection="column" alignItems="center" padding="7">
       <Heading style={gradientStyle} fontFamily="monospace">
       CONNECT WITH ME

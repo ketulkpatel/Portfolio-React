@@ -40,10 +40,11 @@ export default function Education() {
         CGPA: "3.98/4.3",
       },
       achievements: [
-        "Completed Internship as Junior Developer",
-        "Completed Internship as Junior Developer",
-        "Completed Internship as Junior Developer",
+        // "Completed Internship as Junior Developer",
+        // "Completed Internship as Junior Developer",
+        // "Completed Internship as Junior Developer",
       ],
+      transcript: "https://porfolio-ketul.s3.ca-central-1.amazonaws.com/Ketul_Transcript_Dalhousie.pdf",
       x_before: -100,
       x_after: 0,
       y_before: 0,
@@ -62,10 +63,11 @@ export default function Education() {
         CGPA: "8.34/10",
       },
       achievements: [
-        "Completed Internship as Junior Developer",
-        "Completed Internship as Junior Developer",
-        "Completed Internship as Junior Developer",
+        // "Completed Internship as Junior Developer",
+        // "Completed Internship as Junior Developer",
+        // "Completed Internship as Junior Developer",
       ],
+      transcript: "https://porfolio-ketul.s3.ca-central-1.amazonaws.com/Ketul_Transcript_Dharmsinh.pdf",
       x_before: 100,
       x_after: 0,
       y_before: 0,
@@ -86,6 +88,10 @@ export default function Education() {
   const invertStyle = colorMode === "dark" ? { filter: "invert(100%)" } : {};
   const [isBigSize] = useMediaQuery("(min-width: 760px)");
 
+  const fetchTranscript = (transcript: string) => {
+    window.open(transcript, '_blank');
+  };
+  
   return (
     <Flex
       flexDirection="column"
@@ -192,7 +198,7 @@ export default function Education() {
                       </Flex>
                     </motion.div>
                     <Flex marginLeft="auto">
-                      <Button backgroundColor="#0095ff" padding="2" height="130%"  width="100%">
+                      <Button backgroundColor="#0095ff" padding="2" height="130%"  width="100%" onClick={() => fetchTranscript(section.transcript)}>
                         <Text fontSize={["xs", "md"]} fontFamily="monospace" >Transcript <Icon as={FaExternalLinkAlt} boxSize="2"></Icon> </Text>
                       </Button>
                     </Flex>
