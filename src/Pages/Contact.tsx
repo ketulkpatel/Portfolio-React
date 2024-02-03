@@ -25,8 +25,9 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { IoIosArrowForward } from "react-icons/io";
-import { useToast } from '@chakra-ui/react';
+import { useToast } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 function Contact() {
   const { colorMode } = useColorMode();
@@ -121,7 +122,6 @@ function Contact() {
   };
 
   const onSubmit = async () => {
-
     if (validateForm()) {
       try {
         setIsLoading(true);
@@ -129,17 +129,23 @@ function Contact() {
           subject: form.subject,
           message: `Hi Ketul,\n\n${form.message}\n\nYou can contact me at: ${form.email}\n\nRegards,\n${form.name}`,
         };
-  
-        const response = await fetch('https://portfolio-b7rr.onrender.com/send-email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(emailData),
-        });
+
+        const response = await fetch(
+          "https://portfolio-b7rr.onrender.com/send-email",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(emailData),
+          }
+        );
         if (response.ok) {
           const data = await response.json();
-          showToast('success', 'Congratulations on successfully reaching out to Ketul!.');
+          showToast(
+            "success",
+            "Congratulations on successfully reaching out to Ketul!."
+          );
           setForm({
             name: "",
             email: "",
@@ -147,21 +153,27 @@ function Contact() {
             message: "",
           });
         } else {
-          console.error('Error sending email:', response.statusText);
-          showToast('error', 'Error sending email');
+          console.error("Error sending email:", response.statusText);
+          showToast("error", "Error sending email");
         }
       } catch (error: any) {
-        console.error('Error sending email:', error.message);
-        showToast('error', 'Error sending email');
+        console.error("Error sending email:", error.message);
+        showToast("error", "Error sending email");
       } finally {
         setIsLoading(false);
       }
-    } 
+    }
   };
 
   return (
-    <Flex minHeight="100vh" justifyContent="space-evenly" alignItems="center" flexDirection={["column", "column", "column", "row"]} padding={[10, 20]}>
-    {isLoading && (
+    <Flex
+      minHeight="100vh"
+      justifyContent="space-evenly"
+      alignItems="center"
+      flexDirection={["column", "column", "column", "row"]}
+      padding={[10, 20]}
+    >
+      {isLoading && (
         <Box
           position="fixed"
           top="0"
@@ -177,108 +189,139 @@ function Contact() {
           <Spinner size="xl" color="blue.500" />
         </Box>
       )}
-      <Flex flexDirection="column" alignItems="center" padding="7">
-      <Heading style={gradientStyle} fontFamily="monospace">
-      CONNECT WITH ME
-        </Heading>
-        <Image src="./Contact.png" width={["400px", "500px"]} height={["400px", "500px"]}></Image>
-        <Flex gap={["2", "5"]} alignItems="center" justifyContent="flex-end" >
-        <Text
+      <motion.div
+        initial={{
+          opacity: 0,
+          x: -100,
+          y: 0,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+          y: 0,
+        }}
+        transition={{ duration: 2 }}
+      >
+        <Flex flexDirection="column" alignItems="center" padding="7">
+          <Heading style={gradientStyle} fontFamily="monospace">
+            CONNECT WITH ME
+          </Heading>
+          <Image
+            src="./Contact.png"
+            width={["400px", "500px"]}
+            height={["400px", "500px"]}
+          ></Image>
+          <Flex gap={["2", "5"]} alignItems="center" justifyContent="flex-end">
+            <Text
               fontSize={[18, 22]}
               fontFamily="monospace"
               fontStyle="oblique"
               fontWeight="bold"
             >
               Connect
-             </Text>
+            </Text>
             <Icon as={IoIosArrowForward} boxSize="6"></Icon>
-        {socialMediaLinks.map((socialMedia, index) => (
-            <Circle
-              key={index}
-              size={[8, 12]}
-              className={`social-link social-link-${index}`}
-              onClick={() => handleSocialLinkClick(socialMedia.link)}
-              cursor="pointer"
-            >
-              <Icon as={socialMedia.icon} className="icon" boxSize={[6, 8]} />
-            </Circle>
-          ))}
+            {socialMediaLinks.map((socialMedia, index) => (
+              <Circle
+                key={index}
+                size={[8, 12]}
+                className={`social-link social-link-${index}`}
+                onClick={() => handleSocialLinkClick(socialMedia.link)}
+                cursor="pointer"
+              >
+                <Icon as={socialMedia.icon} className="icon" boxSize={[6, 8]} />
+              </Circle>
+            ))}
           </Flex>
-      </Flex>
-      <Flex
-        textAlign="center"
-        alignItems="center"
-        flexDirection="column"
-      >
-        <Heading style={gradientStyle} fontFamily="monospace">
-          CONTACT ME
-        </Heading>
-        <Flex marginTop="3" gap={[3, 7]}>
-          <Stack spacing={4} width={["auto","400px"]}>
-            <FormControl isInvalid={!!formErrors?.get("name")}>
-              <FormLabel htmlFor="name">Name</FormLabel>
-              <Input
-                type="text"
-                id="name"
-                name="name"
-                value={form.name}
-                onChange={(event: any) =>
-                  setForm({ ...form, [event.target.id]: event.target.value })
-                }
-              />
-              <FormErrorMessage>{formErrors?.get("name")}</FormErrorMessage>
-            </FormControl>
-
-            <FormControl isInvalid={!!formErrors?.get("email")}>
-              <FormLabel htmlFor="email">Email Address</FormLabel>
-              <Input
-                type="text"
-                id="email"
-                name="email"
-                value={form.email}
-                onChange={(event: any) =>
-                  setForm({ ...form, [event.target.id]: event.target.value })
-                }
-              />
-              <FormErrorMessage>{formErrors?.get("email")}</FormErrorMessage>
-            </FormControl>
-
-            <FormControl isInvalid={!!formErrors?.get("subject")}>
-              <FormLabel htmlFor="subject">Subject</FormLabel>
-              <Input
-                type="text"
-                id="subject"
-                name="subject"
-                value={form.subject}
-                onChange={(event: any) =>
-                  setForm({ ...form, [event.target.id]: event.target.value })
-                }
-              />
-              <FormErrorMessage>{formErrors?.get("subject")}</FormErrorMessage>
-            </FormControl>
-
-            <FormControl isInvalid={!!formErrors?.get("message")}>
-              <FormLabel htmlFor="message">Message</FormLabel>
-              <Textarea
-                id="message"
-                name="message"
-                value={form.message}
-                onChange={(event: any) =>
-                  setForm({ ...form, [event.target.id]: event.target.value })
-                }
-                placeholder="Your Message"
-              />
-              <FormErrorMessage>{formErrors?.get("message")}</FormErrorMessage>
-            </FormControl>
-            
-
-            <Button onClick={onSubmit} colorScheme="blue" mt={4}>
-              Submit
-            </Button>
-          </Stack>
-          
         </Flex>
-      </Flex>
+      </motion.div>
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          x: 100,
+          y: 0,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+          y: 0,
+        }}
+        transition={{ duration: 2 }}
+      >
+        <Flex textAlign="center" alignItems="center" flexDirection="column">
+          <Heading style={gradientStyle} fontFamily="monospace">
+            CONTACT ME
+          </Heading>
+          <Flex marginTop="3" gap={[3, 7]}>
+            <Stack spacing={4} width={["auto", "400px"]}>
+              <FormControl isInvalid={!!formErrors?.get("name")}>
+                <FormLabel htmlFor="name">Name</FormLabel>
+                <Input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={form.name}
+                  onChange={(event: any) =>
+                    setForm({ ...form, [event.target.id]: event.target.value })
+                  }
+                />
+                <FormErrorMessage>{formErrors?.get("name")}</FormErrorMessage>
+              </FormControl>
+
+              <FormControl isInvalid={!!formErrors?.get("email")}>
+                <FormLabel htmlFor="email">Email Address</FormLabel>
+                <Input
+                  type="text"
+                  id="email"
+                  name="email"
+                  value={form.email}
+                  onChange={(event: any) =>
+                    setForm({ ...form, [event.target.id]: event.target.value })
+                  }
+                />
+                <FormErrorMessage>{formErrors?.get("email")}</FormErrorMessage>
+              </FormControl>
+
+              <FormControl isInvalid={!!formErrors?.get("subject")}>
+                <FormLabel htmlFor="subject">Subject</FormLabel>
+                <Input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={form.subject}
+                  onChange={(event: any) =>
+                    setForm({ ...form, [event.target.id]: event.target.value })
+                  }
+                />
+                <FormErrorMessage>
+                  {formErrors?.get("subject")}
+                </FormErrorMessage>
+              </FormControl>
+
+              <FormControl isInvalid={!!formErrors?.get("message")}>
+                <FormLabel htmlFor="message">Message</FormLabel>
+                <Textarea
+                  id="message"
+                  name="message"
+                  value={form.message}
+                  onChange={(event: any) =>
+                    setForm({ ...form, [event.target.id]: event.target.value })
+                  }
+                  placeholder="Your Message"
+                />
+                <FormErrorMessage>
+                  {formErrors?.get("message")}
+                </FormErrorMessage>
+              </FormControl>
+
+              <Button onClick={onSubmit} colorScheme="blue" mt={4}>
+                Submit
+              </Button>
+            </Stack>
+          </Flex>
+        </Flex>
+      </motion.div>
     </Flex>
   );
 }

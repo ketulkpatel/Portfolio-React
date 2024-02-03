@@ -4,6 +4,7 @@ import RootLayout from './RootLayout';
 import Education from './Pages/Education';
 import Certificates from './Pages/Certificates';
 import Contact from './Pages/Contact';
+import Experience from './Components/Experience';
 
 function App() {
 
@@ -31,6 +32,10 @@ function App() {
         {
           path: "/contact",
           element: <Contact />,
+        },
+        {
+          path: "/experience",
+          element: <Experience />,
         },
       ],
     },

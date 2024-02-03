@@ -38,10 +38,10 @@ export default function NavOptions() {
     { label: "Home", to: "/", color: "red.500" },
     { label: "Education", to: "/education", color: "orange.500" },
     { label: "Certifications", to: "/certificates", color: "yellow.500" },
-    { label: "Experience", to: "/", color: "green.500" },
+    { label: "Experience", to: "/experience", color: "green.500" },
     { label: "Projects", to: "/", color: "cyan.500" },
     { label: "Contact", to: "/contact", color: "blue.500" },
-    { label: "Resume", to: "/", color: "purple.500" },
+    // { label: "Resume", to: "/", color: "purple.500" },
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
 
