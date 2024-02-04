@@ -79,7 +79,7 @@ export default function Experience() {
         achievements: [
           "Crafted a visually stunning and fully functional e-commerce website tailored to the unique needs of the jewellery industry.",
           "Enhanced the jewellery website with personalized choices such as ring sizing, metal selection, and gemstone preferences, resulting in a tailored and interactive shopping experience that contributed to a nearly 8%increase in overall profits.",
-          "ntegrated secure payment gateways and user-friendly navigation, providing an engaging online shopping experience for customers",
+          "Integrated secure payment gateways and user-friendly navigation, providing an engaging online shopping experience for customers",
           "Prioritized mobile responsiveness to capture a wider audience, enhancing the accessibility of the jewellery website for potential customers.",
         ],
         x_before: -100,
@@ -94,7 +94,7 @@ export default function Experience() {
         },
         position: {
           name: "Python Developer",
-          year: "December 2020 - March 2021",
+          year: "December 2020 - May 2021",
         },
         achievements: [
           "Contributed to the development and implementation of a Django framework-based web application, focusing on anomaly detection and response.",
