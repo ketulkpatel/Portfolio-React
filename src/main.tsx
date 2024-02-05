@@ -7,14 +7,14 @@ import CustomCursor from "./CustomCursor";
 
 const theme = extendTheme({
   config: {
-    initialColorMode: "dark",
+    initialColorMode: "light",
     useSystemColorMode: false,
   },
   styles: {
     global: (props: any) => ({
       body: {
-        bg: props.colorMode === "dark" ? "#000000" : "white", // Set the background color for dark mode
-        color: props.colorMode === "dark" ? "white" : "black", // Set the text color for dark mode
+        bg: props.colorMode === "dark" ? "#000000" : "white", 
+        color: props.colorMode === "dark" ? "white" : "black", 
       },
     }),
   },
@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     {/* <CustomCursor/> */}
     <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode="dark" />
+      <ColorModeScript initialColorMode="light" />
       <App />
     </ChakraProvider>
   </React.StrictMode>
