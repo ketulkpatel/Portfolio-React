@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 import { BsCaretRightFill } from "react-icons/bs";
 import { motion } from "framer-motion";
-import "../Pages/Education.css";
 
 export default function Experience() {
   const imageMobia = "/Mobia.png";

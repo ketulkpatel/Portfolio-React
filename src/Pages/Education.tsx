@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 import { BsCaretRightFill } from "react-icons/bs";
 import { motion } from "framer-motion";
-import "./Education.css";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 export default function Education() {
@@ -105,7 +104,7 @@ export default function Education() {
       </Flex>
       <Flex flexDirection={["column", "row"]}>
         {sections.map((section, index) => (
-          <Flex width="100%" flexDirection="column" zIndex={1}>
+          <Flex width="100%" flexDirection="column" zIndex={1} key={index}>
             <Flex alignItems="center" padding="10">
               <Flex
                 width="100%"
@@ -198,7 +197,7 @@ export default function Education() {
                       </Flex>
                     </motion.div>
                     <Flex marginLeft="auto">
-                      <Button backgroundColor="#0095ff" padding="2" height="130%"  width="100%" onClick={() => fetchTranscript(section.transcript)}>
+                      <Button colorScheme="blue" padding="2" height="130%"  width="100%" onClick={() => fetchTranscript(section.transcript)}>
                         <Text fontSize={["xs", "md"]} fontFamily="monospace" >Transcript <Icon as={FaExternalLinkAlt} boxSize="2"></Icon> </Text>
                       </Button>
                     </Flex>

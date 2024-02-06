@@ -149,6 +149,7 @@ function Certificates() {
                   cursor: "pointer",
                 }}
                 onClick={()=> fetchCertificate(certificate.link)}
+                key={index}
               >
                 <CardBody>
                   <Center>
