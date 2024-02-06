@@ -110,7 +110,7 @@ function Certificates() {
   }
 
   return (
-    <Flex minHeight="100vh" alignItems="center">
+    <Flex minHeight="100vh" alignItems="center" marginTop={10}>
       <Flex flexDirection="column" gap="10">
         <Flex justifyContent="center" textAlign="center">
           <Heading style={gradientStyle} fontFamily="monospace">

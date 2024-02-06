@@ -131,8 +131,9 @@ export default function Experience() {
       minHeight="100vh"
       fontFamily="monospace"
       width="100%"
+      
     >
-      <Flex justifyContent="center" margin={50}>
+      <Flex justifyContent="center" margin={10}>
         <Heading style={gradientStyle}>EXPERIENCE</Heading>
       </Flex>
       <Flex

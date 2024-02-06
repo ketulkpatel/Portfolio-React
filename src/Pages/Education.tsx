@@ -96,10 +96,9 @@ export default function Education() {
       flexDirection="column"
       minHeight="100vh"
       fontFamily="monospace"
-      alignContent="center"
       justifyContent="space-evenly"
     >
-      <Flex justifyContent="center" padding={25}>
+      <Flex justifyContent="center">
         <Heading style={gradientStyle}>EDUCATION</Heading>
       </Flex>
       <Flex flexDirection={["column", "row"]}>

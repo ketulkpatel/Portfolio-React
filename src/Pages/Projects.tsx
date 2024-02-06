@@ -216,11 +216,11 @@ function Projects() {
       minHeight="100vh"
       fontFamily="monospace"
       width="100%"
-      marginTop="100"
+      marginTop="10"
       alignItems="center"
     >
-      <Flex flexDirection="column" gap="10">
-        <Flex justifyContent="center" margin={50}>
+      <Flex flexDirection="column" gap="20">
+        <Flex justifyContent="center">
           <Heading style={gradientStyle}>PROJECTS</Heading>
         </Flex>
         <motion.div
