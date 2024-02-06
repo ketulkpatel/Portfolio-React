@@ -141,7 +141,7 @@ export default function Experience() {
         justifyContent="space-between"
         gap="9"
         flexDirection="column"
-        padding="50"
+        padding={["0","50"]}
       >
         {sections.map((section, index) => (
           <motion.div
@@ -149,16 +149,25 @@ export default function Experience() {
               opacity: 0,
               x: section.x_before,
               y: section.y_before,
-              width: "100%",
+              width: "70%",
             }}
             animate={{
               opacity: 1,
               x: section.x_after,
               y: section.y_after,
-              width: "100%",
+              width: "70%",
             }}
             transition={{ duration: 2 }}
-            key={section.name}
+            key={`${section.name}_${index}`} 
+            onClick={() => {
+              setVisibleAchievements((prev) => {
+                if (prev.includes(index)) {
+                  return prev.filter((i) => i !== index);
+                } else {
+                  return [...prev, index];
+                }
+              });
+            }}
           >
             <Flex
               border={`1px solid ${colorMode === "light" ? "black" : "white"}`}
@@ -168,20 +177,9 @@ export default function Experience() {
                   ? "0 6px 8px rgba(0, 0, 0, 0.7)"
                   : "0 6px 8px rgba(255, 255, 255, 0.7)"
               }
-              padding="5"
-              gap={5}
-              width="100%"
-              onClick={() => {
-                setVisibleAchievements((prev) => {
-                  if (prev.includes(index)) {
-                    // Section is already open, close it
-                    return prev.filter((i) => i !== index);
-                  } else {
-                    // Section is closed, open it
-                    return [...prev, index];
-                  }
-                });
-              }}
+              padding={["3","5"]}
+              gap={5}              
+              flexDirection={["column", "row"]}
               cursor="pointer"
               alignItems="center"
             >
@@ -235,7 +233,6 @@ export default function Experience() {
                       </Flex>
                     </motion.div>
                   ))}
-                  {/* )} */}
                 </Flex>
               </Flex>
             </Flex>
@@ -258,7 +255,7 @@ export default function Experience() {
             right: 0,
             width: "100%",
             height: "100%",
-            opacity: colorMode === "light" ? 0.05 : 0.1,
+            opacity: colorMode === "light" ? 0.03 : 0.1,
             zIndex: 0,
             pointerEvents: "none",
             ...invertStyle,
