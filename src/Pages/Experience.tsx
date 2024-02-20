@@ -23,8 +23,28 @@ export default function Experience() {
   const imageMobia = "/Mobia.png";
   const imageCerebulb = "/Cerebulb.png";
   const imageFreelance = "/Freelance.png";
+  const imageGabon = "/Gabon.png";
+  const imageNandini = "/Nandini.png";
 
   const sections = [
+    {
+      company: {
+        name: "Gabon Construction Inc.",
+        image: imageGabon,
+      },
+      position: {
+        name: "Software Developer",
+        year: "September 2023 - Present",
+      },
+      achievements: [
+        "Spearheaded the development of customized features, integrating an advanced order management system to refine procurement, enable end-to-end product tracking, and provide real-time project updates on milestones, timelines, and changes.",
+        "Executed regular updates to mirror the latest industry trends, company news, and project portfolios, leading to increased user engagement and enhanced customer satisfaction.",
+      ],
+      x_before: 100,
+      x_after: 0,
+      y_before: 0,
+      y_after: 0,
+    },
     {
       company: {
         name: "Freelance",
@@ -98,6 +118,24 @@ export default function Experience() {
         "Contributed to the development and implementation of a Django framework-based web application, focusing on anomaly detection and response.",
         "Deployed Neural Network-based image algorithms for real-time anomaly detection, boosting efficiency from 96% to 98%, markedly improving the application’s responsiveness to irregularities.",
         "Pioneered the creation and delivery of a graph-based interactive admin dashboard, providing clients with seamless access to real-time sensor data that empowered users to make informed decisions based on current and real-time information.",
+      ],
+      x_before: 100,
+      x_after: 0,
+      y_before: 0,
+      y_after: 0,
+    },
+    {
+      company: {
+        name: "Nandini Herbal Care",
+        image: imageNandini,
+      },
+      position: {
+        name: "Software Developer",
+        year: "August 2019 - December 2020",
+      },
+      achievements: [
+        "Pioneered the creation and delivery of an interactive admin dashboard empowering clients with seamless access to real-time data on product inventory, sales trends, and customer interactions, facilitating informed decision-making.",
+        "Incorporated innovative personalized recommendations to provide tailored product suggestions to optimize the shopping experience and enhance platform engagement resulting in a 37% increase in website traffic.",
       ],
       x_before: 100,
       x_after: 0,
@@ -240,7 +278,7 @@ export default function Experience() {
         ))}
       </Flex>
 
-      {isBigSize && (
+      {/* {isBigSize && (
         <div
           style={{
             content: "''",
@@ -261,7 +299,7 @@ export default function Experience() {
             ...invertStyle,
           }}
         />
-      )}
+      )} */}
     </Flex>
   );
 }
