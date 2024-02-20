@@ -137,7 +137,7 @@ export default function Experience() {
         "Pioneered the creation and delivery of an interactive admin dashboard empowering clients with seamless access to real-time data on product inventory, sales trends, and customer interactions, facilitating informed decision-making.",
         "Incorporated innovative personalized recommendations to provide tailored product suggestions to optimize the shopping experience and enhance platform engagement resulting in a 37% increase in website traffic.",
       ],
-      x_before: 100,
+      x_before: -100,
       x_after: 0,
       y_before: 0,
       y_after: 0,
