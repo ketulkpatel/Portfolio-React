@@ -27,24 +27,24 @@ export default function Experience() {
   const imageNandini = "/Nandini.png";
 
   const sections = [
-    {
-      company: {
-        name: "Gabon Construction Inc.",
-        image: imageGabon,
-      },
-      position: {
-        name: "Software Developer",
-        year: "September 2023 - Present",
-      },
-      achievements: [
-        "Spearheaded the development of customized features, integrating an advanced order management system to refine procurement, enable end-to-end product tracking, and provide real-time project updates on milestones, timelines, and changes.",
-        "Executed regular updates to mirror the latest industry trends, company news, and project portfolios, leading to increased user engagement and enhanced customer satisfaction.",
-      ],
-      x_before: 100,
-      x_after: 0,
-      y_before: 0,
-      y_after: 0,
-    },
+    // {
+    //   company: {
+    //     name: "Gabon Construction Inc.",
+    //     image: imageGabon,
+    //   },
+    //   position: {
+    //     name: "Software Developer",
+    //     year: "September 2023 - Present",
+    //   },
+    //   achievements: [
+    //     "Spearheaded the development of customized features, integrating an advanced order management system to refine procurement, enable end-to-end product tracking, and provide real-time project updates on milestones, timelines, and changes.",
+    //     "Executed regular updates to mirror the latest industry trends, company news, and project portfolios, leading to increased user engagement and enhanced customer satisfaction.",
+    //   ],
+    //   x_before: 100,
+    //   x_after: 0,
+    //   y_before: 0,
+    //   y_after: 0,
+    // },
     {
       company: {
         name: "Freelance",
@@ -124,24 +124,24 @@ export default function Experience() {
       y_before: 0,
       y_after: 0,
     },
-    {
-      company: {
-        name: "Nandini Herbal Care",
-        image: imageNandini,
-      },
-      position: {
-        name: "Software Developer",
-        year: "August 2019 - December 2020",
-      },
-      achievements: [
-        "Pioneered the creation and delivery of an interactive admin dashboard empowering clients with seamless access to real-time data on product inventory, sales trends, and customer interactions, facilitating informed decision-making.",
-        "Incorporated innovative personalized recommendations to provide tailored product suggestions to optimize the shopping experience and enhance platform engagement resulting in a 37% increase in website traffic.",
-      ],
-      x_before: -100,
-      x_after: 0,
-      y_before: 0,
-      y_after: 0,
-    },
+    // {
+    //   company: {
+    //     name: "Nandini Herbal Care",
+    //     image: imageNandini,
+    //   },
+    //   position: {
+    //     name: "Software Developer",
+    //     year: "August 2019 - December 2020",
+    //   },
+    //   achievements: [
+    //     "Pioneered the creation and delivery of an interactive admin dashboard empowering clients with seamless access to real-time data on product inventory, sales trends, and customer interactions, facilitating informed decision-making.",
+    //     "Incorporated innovative personalized recommendations to provide tailored product suggestions to optimize the shopping experience and enhance platform engagement resulting in a 37% increase in website traffic.",
+    //   ],
+    //   x_before: -100,
+    //   x_after: 0,
+    //   y_before: 0,
+    //   y_after: 0,
+    // },
   ];
 
   const { colorMode } = useColorMode();
